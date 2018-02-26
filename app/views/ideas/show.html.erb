@@ -1,0 +1,49 @@
+<h1><%= @idea.title %></h1>
+<br>
+<p><%= @idea.description %></p>
+<br>
+
+<div class="">
+  <% if can?(:manage, @idea) %>
+     <%= link_to 'Edit', edit_idea_path(@idea) %>
+     |
+     <%= link_to 'Delete',
+      idea_path(@idea),
+      method: :delete,
+      data: {
+        confirm: 'Are you sure?'
+      }
+      %>
+      <% end %>
+</div>
+
+
+<h3>Reviews</h3>
+<%= form_for [@idea,@review] do |f| %>
+  <div class="">
+    <% if @review.errors.present? %>
+  <%= @review.errors.full_messages.join(', ') %>
+<% end %>
+    <%= f.text_area :description, placeholder: "What do you think?" %>
+  </div>
+  <%= f.submit %>
+  <% end %>
+
+<% @reviews.each do |review|  %>
+
+  <hr>
+  <p><%= review.description %></p>
+
+  <% if can?(:manage, review) %>
+      <small>
+        <%= link_to 'Delete',
+         review_path(review),
+         method: :delete,
+         data: {
+           confirm: 'Are you sure?'
+         }
+         %>
+       </small>
+  <% end %>
+
+<% end %>
