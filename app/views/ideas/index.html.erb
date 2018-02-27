@@ -3,14 +3,15 @@
 </div>
 
   <% @ideas.each do |idea| %>
-    <div class="container-fluid row">
+    <div class="container-fluid row" style="min-height: 40px;">
       <div class="toggle">
-        <%= image_tag 'plus.png', class: 'img-fluid', style: 'max-height: 30px; max-width: 30px;' %>
+        <%= image_tag 'plus.png', class: 'img-fluid plus', style: 'max-height: 30px; max-width: 30px; display: display: block;' %>
+        <%= image_tag 'minus.png', class: 'img-fluid minus', style: 'max-height: 30px; max-width: 30px; display: none;' %>
       </div>
 
       <div class="col-11">
-        <%= link_to idea.title, idea_path(idea)%>
-        <p><%= idea.description %></p>
+        <strong><%= link_to idea.title, idea_path(idea), style:"color: crimson"%></strong>
+        <p style="display: none;"><%= idea.description %></p>
       </div>
     </div>
   <% end %>

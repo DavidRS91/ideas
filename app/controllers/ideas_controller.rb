@@ -19,7 +19,7 @@ class IdeasController < ApplicationController
     @idea = Idea.new idea_params
     @idea.user = current_user
     if @idea.save
-      redirect_to ideas_path
+      redirect_to idea_path(@idea)
     else
       render :new
     end

@@ -10,8 +10,37 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+
 //= require jquery3
 //= require popper
 //= require bootstrap
 //= require rails-ujs
 //= require_tree .
+
+// A $( document ).ready() block.
+$( document ).ready(function() {
+    console.log( "ready!" );
+    let plus = document.querySelectorAll('.plus')
+    let minus = document.querySelectorAll('.minus')
+
+    plus.forEach(node=> {
+      node.addEventListener('click',event => {
+        const {currentTarget} = event;
+        console.log(currentTarget);
+        currentTarget.parentElement.parentElement.lastElementChild.lastElementChild.style.display = "block"
+        currentTarget.style.display = "none"
+        currentTarget.parentElement.lastElementChild.style.display = "block"
+
+      });
+    });
+
+    minus.forEach(node=> {
+      node.addEventListener('click',event => {
+        const {currentTarget} = event;
+        console.log(currentTarget);
+        currentTarget.parentElement.parentElement.lastElementChild.lastElementChild.style.display = "none"
+        currentTarget.style.display = "none"
+        currentTarget.parentElement.firstElementChild.style.display = "block"
+      });
+    });
+});
