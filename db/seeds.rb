@@ -30,14 +30,14 @@ users = User.all
 
 100.times.each do
    i = Idea.create(
-     title: Faker::Dog.name,
-     description: Faker::Lorem.paragraph,
+     title: Faker::VentureBros.quote,
+     description: Faker::VForVendetta.speech,
      user: users.sample
    )
    if i.valid?
    rand(0..10).times.each do
      Review.create(
-       description: Faker::Seinfeld.quote,
+       description: Faker::VForVendetta.quote,
        idea: i,
        user: users.sample
      )
